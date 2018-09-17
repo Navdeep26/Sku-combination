@@ -1,0 +1,112 @@
+<style type="text/css">
+	
+	.height: {
+		height: 20px !important;
+	}
+	.width{
+		width: 20px;
+	}
+	
+	.pull-right{
+		float: right;
+	}
+	.margin-top{
+  	margin-top: 20px;
+  }
+  .mrgin-r8{
+  	margin-right: 3px;
+  }
+</style>
+<div class="row" >
+	<div class="col-md-6 pull-right">
+		<p id="notice"><%= notice %></p>
+	</div>
+</div>
+<div  style="margin-top: 30px;" class="container">
+	<div class="sign_up_container" >
+		<div class="row margin-top" >
+			<div class="col-md-7 pull-right" >
+				<h3>Create an account</h3>
+			</div>
+		</div>
+		<div class="row margin-top" >
+			<div class="col-md-7 pull-right" >
+				<form action="/sessions/create" method="post" >
+				  <div class="form-group">
+				    <label for="exampleInputEmail1">Name</label>
+				    <input required type="text" name="name" class="form-control" placeholder="Name">
+				  </div>	
+				  <div class="form-group">
+				    <label for="exampleInputEmail1">Email address</label>
+				    <input required type="email" name="email" class="form-control" placeholder="Email">
+				  </div>
+				  <div class="form-group">
+				    <label for="exampleInputPassword1">Password</label>
+				    <input required type="password" name="password" class="form-control" placeholder="Password">
+				  </div>
+				  <input  type="submit" class="btn btn-default"></button>
+				</form>
+			</div>
+		</div>
+		<div class="row margin-top" >
+			<div class="col-md-7  pull-right" >
+				<div class="row" >
+					<div class="col-md-4" >
+						<a class="btn btn-primary button-auto active " href="/auth/facebook">
+							<img class="width height mrgin-r8" src="https://www.facebook.com/rsrc.php/v3/yO/r/lF-L3veiXx9.png">Sign up using facebook
+						</a>
+					</div>
+					<div class="col-md-4" >
+						<a style="background: #55acee; color: white;" class="btn active button-auto  " href="/auth/twitter">
+							<img class="width height mrgin-r8" src="https://pbs.twimg.com/profile_images/1013798240683266048/zRim1x6M.jpg">Sign up using twitter
+						</a>
+					</div>
+					<div class="col-md-4" >
+						<a style="background: #4285f4; color: white;" class="btn active button-auto  " href="/auth/google">
+							<img class="width height mrgin-r8" src="https://pbs.twimg.com/profile_images/972154872261853184/RnOg6UyU_400x400.jpg">Sign up using google
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container" >
+	<div class="row margin-top container " >
+		<div class="col-md-7 pull-right" >
+			<h3>Do you already have an accout?</h3>
+		</div>
+	</div>
+</div>	
+<div class="container" >
+	<div class="row margin-top" >
+		<div class="row" >
+			<div class="col-md-7 pull-right" >
+				<form action="/sessions/log_in" method="get" >
+					<div class="row" >
+						<div class="col-md-5" >
+				    		<input type="email" name="email" class="form-control" placeholder="Email">
+						</div>
+						<div class="col-md-5" >
+				    		<input type="password" name="password" class="form-control" placeholder="Password">
+						</div>
+						<div class="col-md-2" >
+				  			<input type="submit" class="btn btn-info" value="Log in"></button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- <a class="btn btn-primary btn-lg active btn-block  " href="/auth/facebook"><img src="https://www.facebook.com/rsrc.php/v3/yO/r/lF-L3veiXx9.png">Continue with facebook</a> -->
+
+<script type="text/javascript">
+	$(document).delegate('#log_in','click', function(){
+		debugger
+		$('.sign_up_container').addClass('none')
+		$('.log_in_container').removeClass('none')
+	} )
+</script>
+

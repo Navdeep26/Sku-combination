@@ -1,0 +1,110 @@
+<style type="text/css">
+	.fixed-width{
+		height: 50px;
+		background: #07396b;
+		color: white;
+	}
+	.color{
+		color: white;
+	}
+	.padding{
+		padding: 10px;
+	}
+	.none{
+    display: none;
+  }
+  .margin-top{
+  	margin-top: 20px;
+  }
+  .pull-right{
+		float: right;
+	}
+</style>
+<div class="fixed-width" >
+	<div class="row" >
+		<div class="col-md-6 pull-right" >
+			<div class="padding pull-right" >
+				<a href="/signout">
+					<span class="color">Logout</span>
+				</a>
+			</div>	
+			<div class="padding pull-right" >
+				<a href="javascript:void(0)">
+					<span id="show_sku_combination" class="color">SKU Combination Creation</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="sku_form none margin-top" >
+	<div class="container" >
+		<div class="jumbotron" >
+			<form id="sku_combination_form" enctype="multipart/form-data" action="/skus/create" method="POST" >
+				 <div class="form-group">
+				    <label for="exampleInputEmail1">UPLOAD A CSV</label>
+				    <input required type="file" name="csv_file">
+				  </div>	
+				  <div class="form-group">
+				    <label for="exampleInputEmail1">SKU DENOMINATION</label>
+				    <input required type="number" name="sku" class="form-control" placeholder="SKU DENOMINATION">
+				  </div>
+				  <input type="submit" class="btn btn-info" name="" value="Submit" >
+			  		<!-- <button type="button" id="submit_sku_combination_form" class="btn btn-info" >Submit</button> -->
+			</form>
+		</div>	
+	</div>
+</div>
+
+<script type="text/javascript">
+	// function show_sku_combination() {
+	// 	debugger
+	// 	document.getElementByClass("sku_form").classList.remove("none");
+	// }
+	$('#show_sku_combination').click(function(){
+		debugger
+		$('.sku_form').toggle();
+	})
+
+
+	$("#submit_sku_combination_form").click(function(e) {
+		debugger
+    	e.preventDefault();    
+	    var form = $('#sku_combination_form');
+	    var url = form.attr('action');
+        var formData = $('#sku_combination_form').serialize();
+	    $.ajax({
+	           	type: "POST",
+	           	url: url,
+	           	cache: false,
+            	dataType: 'json',
+            	processData: false, 
+           	 	contentType: false,  
+	           data: formData, // serializes the form's elements.
+	           success: function(data)
+	           {
+	               alert(data); // show response from the php script.
+	           }
+	         });
+
+	    // e.preventDefault(); // avoid to execute the actual submit of the form.
+	});
+
+	// $("#submit_sku_combination_form").click(function(e) {
+	// 	debugger
+ //    e.preventDefault();    
+ //    var formData = new FormData(this);
+ //     var url = $("#submit_sku_combination_form").attr('action');
+	//     $.ajax({
+	//         url: url,
+	//         type: 'POST',
+	//         data: formData,
+	//         success: function (data) {
+	//             alert(data)
+	//         },
+	//         cache: false,
+	//         contentType: false,
+	//         processData: false
+	//     });
+	// });
+</script>
